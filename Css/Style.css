@@ -495,3 +495,88 @@
   object-fit: contain;  /* nunca recorta tu cara */
   border-radius: 12px;
 }
+
+
+.contact {
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .contact-form {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    background: white;
+    color: #333;
+    transition: all 0.3s;
+  }
+
+  .form-control:focus {
+    border: 2px solid #10b981;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+  }
+
+  .submit-btn {
+    background: linear-gradient(90deg, #10b981, #059669);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .submit-btn:hover {
+    background: linear-gradient(90deg, #059669, #047857);
+    transform: scale(1.05);
+  }
+
+  /* BOTON WHATSAPP FIJO */
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: transform 0.3s;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+  }
+
+  .whatsapp-float img {
+    width: 35px;
+    height: 35px;
+  }
