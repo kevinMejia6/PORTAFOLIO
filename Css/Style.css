@@ -580,3 +580,22 @@
     width: 35px;
     height: 35px;
   }
+  /* FIN BTN WHATSAPP */
+  @media screen and (max-width: 480px) {
+  .btn {
+    display: block;          /* hace que ocupen toda la línea */
+    width: 100%;             /* ancho completo */
+    max-width: 280px;        /* límite opcional */
+    margin: 10px auto;       /* centrados con margen */
+    font-size: 1rem;         /* texto más pequeño en móvil */
+    padding: 12px 20px;      /* menos padding */
+  }
+
+  header h1 {
+    font-size: 2rem;         /* título más pequeño */
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+}
