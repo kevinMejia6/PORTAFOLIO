@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Portafolio de Desarrollo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="Css/Style.css" />
+    <!-- Particles.js CDN -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="Js/Particle.js"></script>
+
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <div class="logo">TuNombre</div>
+      <button class="hamburger" id="hamburger">☰</button>
+      <ul id="nav-links">
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#skills">Habilidades</a></li>
+        <li><a href="#projects">Proyectos</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header -->
+    <header
+      id="home"
+      class="relative h-screen flex flex-col justify-center items-center text-center text-white overflow-hidden"
+    >
+      <!-- Fondo degradado -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-600"
+      ></div>
+
+      <!-- Particles.js container -->
+      <div id="particles-js" class="absolute inset-0"></div>
+
+      <!-- Contenido -->
+      <div class="relative z-10 px-6">
+        <h1
+          id="hero-title"
+          class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"
+        >
+          🚀 Desarrollador de Software
+        </h1>
+        <p
+          id="hero-desc"
+          class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto"
+        >
+          Creando
+          <span class="text-blue-300 font-semibold">soluciones digitales</span>
+          innovadoras y funcionales para el mundo actual.
+        </p>
+        <div>
+          <a href="#projects" class="btn" id="hero-btn1">Ver proyectos</a>
+          <a href="#contact" class="btn" id="hero-btn2">Contactar</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title fade-in">Sobre mí</h2>
+        <div class="about-content">
+          <div class="about-text fade-in">
+            <h3>
+              Hola, soy
+              <span style="color: var(--primary-color)">Kevin Eduardo</span>
+            </h3>
+            <p style="margin: 20px 0">
+              Soy ingeniero en sistemas con preespecialización en ciencia de
+              datos, apasionado por transformar ideas en soluciones digitales a
+              través del <strong>desarrollo web moderno</strong>. Mi enfoque
+              está en crear aplicaciones funcionales, escalables y con
+              interfaces atractivas que brinden valor real a los usuarios.
+            </p>
+            <p style="margin-bottom: 20px">
+              He trabajado en proyectos que abarcan desde la gestión empresarial
+              hasta aplicaciones personalizadas para startups, aplicando tanto
+              <strong>frontend</strong> como <strong>backend</strong> con
+              tecnologías actuales como
+              <em
+                >JavaScript, TypeScript, Node.js, Firebase, MySQL y
+                TailwindCSS</em
+              >. Además, mi formación en <strong>ciencia de datos</strong> me
+              permite integrar análisis de información para potenciar la toma de
+              decisiones.
+            </p>
+            <p>
+              Cuando no estoy programando, me gusta aprender nuevas tecnologías,
+              experimentar con proyectos personales y seguir perfeccionando mis
+              habilidades. Creo firmemente en el aprendizaje continuo y en
+              mantenerme siempre al día con las tendencias que impulsan el mundo
+              digital.
+            </p>
+          </div>
+
+          <div class="about-img fade-in">
+            <img src="assets/img/Fofo-perfil.jpg" alt="Tu foto de perfil" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title fade-in">Mis Habilidades</h2>
+        <div class="skills-grid">
+          <div class="skill-card fade-in">
+            <div class="skill-icon">💻</div>
+            <h3>Frontend</h3>
+            <p>HTML5, CSS3, JavaScript, React,Librerias css</p>
+            <div class="progress-bar">
+              <div class="progress" data-width="90"></div>
+            </div>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon">⚙️</div>
+            <h3>Backend</h3>
+            <p>Node.js, Python, PHP.</p>
+            <div class="progress-bar">
+              <div class="progress" data-width="85"></div>
+            </div>
+          </div>
+          <!-- <div class="skill-card fade-in">
+                    <div class="skill-icon">📱</div>
+                    <h3>Diseños Web</h3>
+                    <p>Adobe</p>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="75"></div>
+                    </div>
+                </div> -->
+          <div class="skill-card fade-in">
+            <div class="skill-icon">🗄️</div>
+            <h3>Bases de Datos</h3>
+            <p>MySQL, SQL , Firebase</p>
+            <div class="progress-bar">
+              <div class="progress" data-width="80"></div>
+            </div>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon">🔧</div>
+            <h3>Herramientas</h3>
+            <p>Git,Office 365, Adobe etc.</p>
+            <div class="progress-bar">
+              <div class="progress" data-width="70"></div>
+            </div>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon">🎨</div>
+            <h3>Diseño</h3>
+            <p>Figma, Adobe XD, UI/UX, Responsive Design</p>
+            <div class="progress-bar">
+              <div class="progress" data-width="65"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title fade-in">Mis Proyectos</h2>
+        <div class="project-grid">
+          <!-- SISTEMA DE CONTROL DE INVENTARIO IT -->
+
+          <div class="project-card">
+            <div class="project-img">
+              <!-- Aquí va la captura real del sistema -->
+              <img
+                src="assets/img/inventario-login.png"
+                alt="Vista del Sistema de Inventario IT"
+                class="screenshot"
+              />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Sistema de Control de Inventario IT</h3>
+              <p>
+                Aplicación web enfocada en la gestión y control del inventario
+                de computadoras dentro del área de TI. Permite llevar un
+                registro detallado de cada equipo, clasificarlos según su estado
+                (funcional, bajo rendimiento, en reparación, excelente),
+                importar datos desde archivos JSON y generar estadísticas en
+                tiempo real. Incluye autenticación de usuarios y un panel
+                moderno para la administración centralizada.
+              </p>
+              <div class="project-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">⚡ JavaScript</span>
+
+                <span class="tag">Bootstrap</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://kevinmejia6.github.io/ControlInventarioIT/index.html"
+                  target="_blank"
+                  class="project-link"
+                  >Ver Demo</a
+                >
+                <!-- <a href="#" class="project-link">GitHub</a> -->
+              </div>
+            </div>
+          </div>
+
+          <!-- FIN SISTEMA DE CONTROL DE INVENTARIO IT -->
+
+          <!-- SISTEMA DE ENCUESTAS -->
+
+          <div class="project-card">
+            <div class="project-img">
+              <img
+                src="assets/img/encuestas-login.png"
+                alt="Sistema de Encuestas"
+                class="screenshot"
+              />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Sistema de Encuestas</h3>
+              <p>
+                Plataforma web que permite crear, gestionar y responder
+                encuestas en línea de manera eficiente, ofreciendo una
+                experiencia intuitiva tanto para administradores como para
+                participantes. Incluye autenticación de usuarios con diferentes
+                roles, un panel de administración moderno para visualizar
+                respuestas en tiempo real, y herramientas de análisis que
+                facilitan la exportación de resultados y estadísticas en
+                diversos formatos.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Html</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">⚡ JavaScript</span>
+
+                <span class="tag">TailwindCSS</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://sistema-encuestas-como.web.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link"
+                  >Ver Demo</a
+                >
+                <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a> -->
+              </div>
+            </div>
+          </div>
+          <!-- FIN SISTEMA DE ENCUESTAS -->
+
+          <!-- SISTEMA GENERADOR DE COTIZACIONES -->
+
+          <div class="project-card">
+            <div class="project-img">
+              <img
+                src="assets/img/CotizadorTecma.png"
+                alt="Sistema Cotizador TECMA"
+                class="screenshot"
+              />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Sistema Cotizador TECMA</h3>
+              <p>
+                Aplicación web desarrollada para la empresa
+                <strong>TECMA</strong>, que permite generar y gestionar
+                cotizaciones de productos y servicios de forma rápida y
+                organizada. Incluye autogeneración de códigos, control de
+                validez, aplicación de descuentos, carga de imágenes de
+                productos y cálculo automático de totales con impuestos. Además,
+                permite exportar cotizaciones en formato PDF y mantener un
+                historial accesible para clientes y asesores.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Javascript</span>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">⚡ JavaScript</span>
+
+                <span class="tag">TailwindCSS</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://kevinmejia6.github.io/CotizadorTecma/"
+                  target="_blank"
+                  class="project-link"
+                  >Ver Demo</a
+                >
+                <!-- <a href="#" class="project-link">GitHub</a> -->
+              </div>
+            </div>
+          </div>
+          <!-- FIN SISTEMA GENERADOR DE COTIZACIONES -->
+
+          <!-- sistema de control de ahorros. -->
+
+          <div class="project-card">
+            <div class="project-img">
+              <img
+                src="assets/img/Control-Ahorro.png"
+                alt="Control-Ahorro"
+                class="screenshot"
+              />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Sistema Control de Ahorro</h3>
+              <p>
+                Aplicación web de ahorro inteligente diseñada para ayudar a los
+                usuarios a planificar y alcanzar su meta de comprar su primer
+                vehículo. Permite establecer una meta financiera personalizada,
+                registrar depósitos de ahorro y calcular automáticamente el
+                tiempo estimado para lograr el objetivo. El sistema muestra
+                indicadores clave como el total ahorrado, la cantidad restante,
+                el tiempo aproximado en meses y días, además de hitos de
+                progreso (25%, 50%, 75% y 100%) que motivan al usuario a
+                continuar. También incluye un historial de movimientos para
+                mantener un control detallado de cada aporte realizado. Su
+                interfaz moderna y responsiva está pensada para ofrecer una
+                experiencia clara, motivadora y accesible desde cualquier
+                dispositivo.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Html</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">TailwindCSS</span>
+                <span class="tag">⚡ JavaScript</span>
+
+                <span class="tag">LocalStorage</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://kevinmejia6.github.io/SistemaAhorro/"
+                  target="_blank"
+                  class="project-link"
+                  >Ver Demo</a
+                >
+                <!-- <a href="#" class="project-link">GitHub</a> -->
+              </div>
+            </div>
+          </div>
+          <!-- FIN sistema de control de ahorros. -->
+
+          <!-- GENERADOR DE FIRMA AUTOMATICA COMO  -->
+          <div class="project-card">
+            <div class="project-img">
+              <img
+                src="assets/img/Generador-Firma-Correo.png"
+                alt="Generador de Firma Automatica COMO"
+                class="screenshot"
+              />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Generador de Firma Automatica COMO</h3>
+              <p>
+                Aplicación web que permite crear de manera automática firmas
+                digitales personalizadas para correos electrónicos corporativos.
+                Los usuarios ingresan su información (nombre, apellido, correo,
+                sucursal, teléfono y área), y el sistema genera una firma
+                profesional con logotipo, datos de contacto y un código QR
+                dinámico, que facilita el acceso a información adicional o
+                enlaces directos. Este sistema garantiza la uniformidad en la
+                identidad visual de la empresa, mejora la presentación de los
+                correos electrónicos y permite exportar firmas listas para
+                integrar en diferentes plataformas (Gmail, Outlook, Thunderbird,
+                entre otros). Su diseño moderno, intuitivo y responsivo asegura
+                que el proceso sea rápido y eficiente, adaptándose a cualquier
+                dispositivo.
+              </p>
+              <div class="project-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CCS3</span>
+                <span class="tag">⚡ JavaScript</span>
+
+                <span class="tag">Bootstrap 5</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://kvineduardo06.github.io/Generador_Firma/"
+                  target="_blank"
+                  class="project-link"
+                  >Ver Demo</a
+                >
+                <!-- <a href="#" class="project-link">GitHub</a> -->
+              </div>
+            </div>
+          </div>
+          <!-- FIN GENERADOR DE FIRMA AUTOMATICA COMO  -->
+
+          <!-- Rastreador de Gastos Personales -->
+
+          <div class="project-card">
+            <div class="project-img">
+              <img
+                src="assets/img/Rastreador-Gastos.png"
+                alt="Rastreador "
+                class="screenshot"
+              />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Rastreador de Gastos Personales</h3>
+              <p>
+                Aplicación web diseñada para llevar un control detallado y
+                eficiente de las finanzas personales. Permite registrar ingresos
+                por quincena, añadir gastos con categorías personalizadas y
+                visualizar un resumen financiero en tiempo real con balances por
+                período. Incluye gráficos interactivos que muestran los gastos
+                por categoría y por quincena, facilitando la identificación de
+                patrones de consumo y el manejo del presupuesto. Su interfaz
+                moderna e intuitiva ayuda a los usuarios a tomar decisiones
+                financieras más conscientes y organizadas. Con este sistema,
+                gestionar las finanzas se convierte en una tarea sencilla,
+                accesible y visualmente atractiva.
+              </p>
+              <div class="project-tags">
+                <span class="tag">🟦 HTML</span>
+                <span class="tag">🎨 CSS3</span>
+                <span class="tag">⚡ JavaScript</span>
+                <span class="tag">📊 Chart.js</span>
+                <span class="tag">🎭 Bootstrap</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://kevinmejia6.github.io/ControlGastoV2/"
+                  target="_blank"
+                  class="project-link"
+                  >Ver Demo</a
+                >
+                <!-- <a href="#" class="project-link">GitHub</a> -->
+              </div>
+            </div>
+          </div>
+          <!-- Fin Rastreador de Gastos Personales -->
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title fade-in">Contacto</h2>
+        <p class="fade-in" style="max-width: 700px; margin: 0 auto 40px">
+          ¿Tienes un proyecto en mente o quieres colaborar? ¡Me encantaría saber
+          de ti! Completa el formulario a continuación y me pondré en contacto
+          contigo lo antes posible.
+        </p>
+        <form id="contact-form" class="fade-in">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Tu nombre"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Tu correo electrónico"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Asunto"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              class="form-control"
+              placeholder="Tu mensaje"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Enviar mensaje</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="social-links">
+          <a href="#" class="social-link">📱</a>
+          <a href="#" class="social-link">📧</a>
+          <a href="#" class="social-link">🔗</a>
+          <a href="#" class="social-link">🐙</a>
+        </div>
+        <p>&copy; 2025 Tu Nombre. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Navegación
+      const navbar = document.getElementById("navbar");
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+
+      // Mostrar navbar al hacer scroll
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+          navbar.classList.add("show");
+        } else {
+          navbar.classList.remove("show");
+        }
+      });
+
+      // Menú hamburguesa
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.textContent = navLinks.classList.contains("active")
+          ? "✕"
+          : "☰";
+      });
+
+      // Cerrar menú al hacer clic en un enlace
+      document.querySelectorAll("#nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          hamburger.textContent = "☰";
+        });
+      });
+
+      // Animaciones con GSAP
+      document.addEventListener("DOMContentLoaded", () => {
+        // Animación de header
+        gsap.to("#hero-title", {
+          opacity: 1,
+          duration: 1,
+          delay: 0.5,
+        });
+        gsap.to("#hero-desc", {
+          opacity: 1,
+          duration: 1,
+          delay: 0.8,
+        });
+        gsap.to("#hero-btn1", {
+          opacity: 1,
+          duration: 1,
+          delay: 1.1,
+        });
+        gsap.to("#hero-btn2", {
+          opacity: 1,
+          duration: 1,
+          delay: 1.3,
+        });
+
+        // Animación de elementos al hacer scroll
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animación de fade-in
+        gsap.utils.toArray(".fade-in").forEach((element) => {
+          gsap.from(element, {
+            scrollTrigger: {
+              trigger: element,
+              start: "top 80%",
+              toggleClass: {
+                targets: element,
+                className: "active",
+              },
+            },
+          });
+        });
+
+        // Animación de barras de progreso
+        gsap.utils.toArray(".progress").forEach((progress) => {
+          const width = progress.getAttribute("data-width");
+          gsap.to(progress, {
+            scrollTrigger: {
+              trigger: progress.parentElement,
+              start: "top 80%",
+              once: true,
+            },
+            width: `${width}%`,
+            duration: 1.5,
+            ease: "power2.out",
+          });
+        });
+
+        // Animación de tarjetas de proyecto
+        gsap.utils.toArray(".project-card").forEach((card, i) => {
+          gsap.to(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              toggleClass: {
+                targets: card,
+                className: "show",
+              },
+            },
+            delay: i * 0.2,
+          });
+        });
+      });
+
+      // Smooth scroll para navegación
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 70,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Form submission (simulado)
+      const contactForm = document.getElementById("contact-form");
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("¡Gracias por tu mensaje! Te responderé pronto.");
+        contactForm.reset();
+      });
+
+      //particlJS
+       particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 150, "density": { "enable": true, "value_area": 800 } },
+      "color": { "value": "#ffffff" },
+      "shape": { "type": "circle" },
+      "opacity": { "value": 0.5 },
+      "size": { "value": 3, "random": true },
+      "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.3, "width": 1 },
+      "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": { "enable": true, "mode": "repulse" },
+        "onclick": { "enable": true, "mode": "push" }
+      },
+      "modes": {
+        "repulse": { "distance": 100, "duration": 0.4 },
+        "push": { "particles_nb": 4 }
+      }
+    },
+    "retina_detect": true
+  });
+    </script>
+  </body>
+</html>
