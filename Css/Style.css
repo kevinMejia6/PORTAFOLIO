@@ -61,7 +61,7 @@ body {
 }
 
 header {
-  background: linear-gradient(to right, #0a2263, #022267, #0d1a37);
+  background: linear-gradient(to right, #020c29, #010c25, #0d1a37);
   color: white;
   height: 100vh;
   display: flex;
@@ -730,3 +730,4 @@ header .relative.z-10 {
   z-index: 2;
   /* asegura que el texto quede encima */
 }
+
