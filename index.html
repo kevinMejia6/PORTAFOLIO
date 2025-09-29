@@ -12,6 +12,13 @@
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="Js/Particle.js"></script>
 
+  <!-- Toastify CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <!-- Toastify JS -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
 </head>
 
 <body>
@@ -161,6 +168,15 @@
           <p>Figma, Adobe XD, UI/UX, Responsive Design</p>
           <div class="progress-bar">
             <div class="progress" data-width="65"></div>
+          </div>
+        </div>
+
+         <div class="skill-card fade-in">
+          <div class="skill-icon">💻</div>
+          <h3>Soporte Tecnico</h3>
+          <p>Soporte windows,Desarrollo etc.</p>
+          <div class="progress-bar">
+            <div class="progress" data-width="80"></div>
           </div>
         </div>
       </div>
@@ -586,7 +602,15 @@
     const contactForm = document.getElementById("contact-form");
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      alert("¡Gracias por tu mensaje! Te responderé pronto.");
+      Toastify({
+        text: "¡Gracias por tu mensaje! Te responderé pronto. 🚀",
+        duration: 11000, // milisegundos
+        close: true, // botón para cerrar
+        gravity: "top", // "top" o "bottom"
+        position: "right", // "left", "center" o "right"
+        backgroundColor: "linear-gradient(to right, #10b981, #059669)", // verde bonito
+        stopOnFocus: true // no se cierra si el usuario pasa el mouse
+      }).showToast();
       contactForm.reset();
     });
 
