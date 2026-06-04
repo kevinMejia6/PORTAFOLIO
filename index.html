@@ -1,723 +1,902 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Portafolio de Desarrollo</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+
+  <title>Kevin Eduardo | Portafolio de Desarrollo</title>
+
+  <!-- Carga el tema antes de pintar la página -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = savedTheme || (prefersDark ? "dark" : "light");
+
+      document.documentElement.classList.toggle("dark", theme === "dark");
+      document.documentElement.classList.toggle("light-theme", theme === "light");
+    })();
+  </script>
+
+  <!-- TailwindCSS CDN -->
+  <script>
+    tailwind = {
+      config: {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+            },
+            boxShadow: {
+              glow: "0 0 45px rgba(37, 99, 235, 0.25)",
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="Css/Style.css" />
-  <!-- Particles.js CDN -->
+
+  <!-- Librerías -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="Js/Particle.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Toastify CSS -->
+  <!-- Toastify -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
-  <!-- Toastify JS -->
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-
 </head>
 
-<body>
-  <nav id="navbar">
-    <div class="logo">Kevineduardo.dev</div>
-    <button class="hamburger" id="hamburger">☰</button>
-    <ul id="nav-links">
-      <li><a href="#home">Inicio</a></li>
-      <li><a href="#about">Sobre mí</a></li>
-      <li><a href="#skills">Habilidades</a></li>
-      <li><a href="#projects">Proyectos</a></li>
-      <li><a href="#contact">Contacto</a></li>
-    </ul>
+<body class="site-body">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="site-nav">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+
+      <a href="#home" class="flex items-center gap-3">
+        <span class="logo-box">KE</span>
+        <span class="text-lg font-black tracking-tight text-[var(--text-primary)]">
+          Kevineduardo<span class="text-blue-600 dark:text-blue-400">.dev</span>
+        </span>
+      </a>
+
+      <ul class="hidden items-center gap-8 text-sm font-bold md:flex">
+        <li><a class="nav-link" href="#home">Inicio</a></li>
+        <li><a class="nav-link" href="#about">Sobre mí</a></li>
+        <li><a class="nav-link" href="#skills">Habilidades</a></li>
+        <li><a class="nav-link" href="#projects">Proyectos</a></li>
+        <li><a class="nav-link" href="#contact">Contacto</a></li>
+      </ul>
+
+      <div class="hidden items-center gap-3 md:flex">
+        <button id="theme-toggle" type="button" class="theme-btn" aria-label="Cambiar modo claro u oscuro">
+          <i data-lucide="sun" class="theme-icon-sun h-5 w-5"></i>
+          <i data-lucide="moon" class="theme-icon-moon hidden h-5 w-5"></i>
+        </button>
+
+        <a href="#contact" class="btn-nav">
+          Trabajemos
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-toggle-mobile" type="button" class="theme-btn" aria-label="Cambiar modo claro u oscuro">
+          <i data-lucide="sun" class="theme-icon-sun h-5 w-5"></i>
+          <i data-lucide="moon" class="theme-icon-moon hidden h-5 w-5"></i>
+        </button>
+
+        <button id="hamburger" type="button" class="menu-btn" aria-label="Abrir menú">
+          <i data-lucide="menu" class="h-6 w-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+      <ul class="space-y-4 text-base font-bold">
+        <li><a class="mobile-link block" href="#home">Inicio</a></li>
+        <li><a class="mobile-link block" href="#about">Sobre mí</a></li>
+        <li><a class="mobile-link block" href="#skills">Habilidades</a></li>
+        <li><a class="mobile-link block" href="#projects">Proyectos</a></li>
+        <li><a class="mobile-link block" href="#contact">Contacto</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- Header -->
-  <header id="home"
-    class="relative h-screen flex flex-col justify-center items-center text-center text-white overflow-hidden">
-    <!-- Fondo degradado -->
-
-    <!-- Particles.js container -->
+  <!-- HERO -->
+  <header id="home" class="hero-section">
     <div id="particles-js" class="absolute inset-0"></div>
+    <div class="hero-gradient"></div>
 
-    <!-- Contenido -->
-    <div class="relative z-10 px-6">
-      <h1 id="hero-title" class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-        🚀 Desarrollador de Software
-      </h1>
-      <p id="hero-desc" class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-        Creando
-        <span class="text-blue-300 font-semibold">soluciones digitales</span>
-        innovadoras y funcionales para el mundo actual.
-      </p>
-      <div>
-        <a href="#projects" class="btn" id="hero-btn1">Ver proyectos</a>
-        <a href="#contact" class="btn" id="hero-btn2">Contactar</a>
+    <div
+      class="relative z-10 mx-auto grid min-h-screen max-w-7xl items-center gap-12 px-5 pb-20 pt-32 lg:grid-cols-2 lg:px-8">
+
+      <div class="text-center lg:text-left">
+        <div id="hero-badge" class="hero-badge">
+          <i data-lucide="sparkles" class="h-4 w-4"></i>
+          Desarrollo web moderno y soluciones digitales
+        </div>
+
+        <h1 id="hero-title" class="hero-title opacity-0">
+          Hola, soy
+          <span class="hero-title-gradient">Kevin Eduardo</span>
+        </h1>
+
+        <p id="hero-desc" class="hero-description opacity-0">
+          Ingeniero en sistemas enfocado en crear aplicaciones web modernas,
+          funcionales, escalables y visualmente profesionales.
+        </p>
+
+        <div id="hero-buttons" class="mt-9 flex flex-col justify-center gap-4 opacity-0 sm:flex-row lg:justify-start">
+          <a href="#projects" class="btn-primary">
+            <i data-lucide="folder-kanban" class="h-5 w-5"></i>
+            Ver proyectos
+          </a>
+
+          <a href="#contact" class="btn-secondary">
+            <i data-lucide="send" class="h-5 w-5"></i>
+            Contactar
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <p class="stat-number">7+</p>
+            <p class="stat-label">Proyectos</p>
+          </div>
+          <div>
+            <p class="stat-number">Full</p>
+            <p class="stat-label">Stack</p>
+          </div>
+          <div>
+            <p class="stat-number">UI</p>
+            <p class="stat-label">Moderna</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative hidden lg:block">
+        <div class="absolute -inset-5 rounded-[3rem] bg-blue-600/20 blur-3xl"></div>
+
+        <div
+          class="relative rounded-[2rem] border border-[var(--border-color)] bg-[var(--card-bg)] p-5 shadow-glow backdrop-blur-xl">
+          <div class="rounded-[1.5rem] bg-slate-950 p-5">
+            <div class="mb-5 flex items-center gap-2">
+              <span class="h-3 w-3 rounded-full bg-red-400"></span>
+              <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
+              <span class="h-3 w-3 rounded-full bg-green-400"></span>
+            </div>
+
+            <pre class="overflow-hidden text-sm leading-7 text-slate-300"><code><span class="text-blue-300">const</span> developer = {
+  name: <span class="text-emerald-300">"Kevin Eduardo"</span>,
+  role: <span class="text-emerald-300">"Software Developer"</span>,
+  stack: [
+    <span class="text-emerald-300">"JavaScript"</span>,
+    <span class="text-emerald-300">"Node.js"</span>,
+    <span class="text-emerald-300">"Firebase"</span>,
+    <span class="text-emerald-300">"MySQL"</span>,
+    <span class="text-emerald-300">"TailwindCSS"</span>
+    <span class="text-emerald-300">"React JS"</span>
+    <span class="text-emerald-300">"HTML"</span>
+    
+  ],
+  focus: <span class="text-emerald-300">"Desarrollar sistemas funcionales"</span>
+};</code></pre>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title fade-in">Sobre mí</h2>
-      <div class="about-content">
-        <div class="about-text fade-in">
-          <h3>
-            Hola, soy
-            <span style="color: var(--primary-color)">Kevin Eduardo</span>
+  <!-- SOBRE MÍ -->
+  <section id="about" class="section section-main">
+    <div class="mx-auto max-w-7xl px-5 lg:px-8">
+      <div class="section-header fade-in">
+        <span class="section-kicker">Conóceme</span>
+        <h2 class="section-title">Sobre mí</h2>
+        <p class="section-description">
+          Desarrollo soluciones digitales pensadas para ser útiles, claras y escalables.
+        </p>
+      </div>
+
+      <div class="mt-16 grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+
+        <div class="fade-in space-y-6">
+          <h3 class="text-3xl font-black leading-tight text-[var(--text-primary)]">
+            Soy <span class="text-blue-600 dark:text-blue-400">ingeniero en sistemas</span>
+            apasionado por el desarrollo web.
           </h3>
-          <p style="margin: 20px 0">
-            Soy <strong>ingeniero en sistemas</strong> con preespecialización en
-            <strong>ciencia de datos</strong>, apasionado por transformar ideas en
-            <strong>soluciones digitales innovadoras</strong> a través del
-            <em>desarrollo web moderno</em>.
-            Mi enfoque está en crear aplicaciones <strong>funcionales, escalables</strong>
-            y con <strong>interfaces atractivas</strong> que generen valor real a los usuarios.
+
+          <p class="text-lg leading-8 text-[var(--text-secondary)]">
+            Me especializo en crear aplicaciones funcionales, modernas y fáciles de usar.
+            Trabajo tanto en frontend como backend, integrando bases de datos,
+            autenticación, reportes, automatizaciones y experiencias de usuario atractivas.
           </p>
 
-          <p style="margin-bottom: 20px">
-            A lo largo de mi experiencia he trabajado en proyectos que abarcan desde la
-            <strong>gestión empresarial</strong> hasta aplicaciones personalizadas para
-            <strong>startups</strong>, aplicando tanto
-            <strong>frontend</strong> como <strong>backend</strong> con tecnologías como
-            <em>JavaScript, TypeScript, Node.js, Firebase, MySQL, TailwindCSS y React.js</em>.
-            Además, mi formación en <strong>ciencia de datos</strong> me permite integrar
-            <strong>análisis de información</strong> para potenciar la toma de decisiones estratégicas.
+          <p class="text-lg leading-8 text-[var(--text-secondary)]">
+            Tengo experiencia con tecnologías como JavaScript, TypeScript, Node.js,
+            Firebase, MySQL, PHP, CodeIgniter, TailwindCSS, Bootstrap, JasperSoft,
+            Power BI y herramientas de automatización.
           </p>
 
-          <p style="margin-bottom: 20px">
-            También cuento con experiencia en:
-            <ul style="margin: 10px 0 0 20px; list-style: disc;">
-              <li>Soporte técnico y mantenimiento de equipos informáticos.</li>
-              <li>Edición de videos y producción de contenido digital.</li>
-              <li>Desarrollo y soporte en entornos Windows.</li>
-              <li><strong>Frontend:</strong> HTML5, CSS3, Bootstrap, TailwindCSS, jQuery.</li>
-              <li><strong>Backend:</strong> PHP, CodeIgniter.yii</li>
-              <li><strong>Bases de datos:</strong> MySQL, Sql</li>
-              <li><strong>Reporteria:</strong> JasperSoft,PowerBi</li>
-              <li><strong>Boot:</strong> Ui Path Studio</li>
-              <li><strong>Integraciones:</strong> Facturación electrónica y uso avanzado de <em>DataTables</em>.</li>
-            </ul>
-          </p>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="info-card">
+              <i data-lucide="monitor-smartphone" class="h-6 w-6 text-blue-600 dark:text-blue-400"></i>
+              <div>
+                <h4>Desarrollo Web</h4>
+                <p>Sitios y sistemas responsivos.</p>
+              </div>
+            </div>
 
-          <p>
-            Cuando no estoy programando, me gusta aprender nuevas tecnologías,
-            experimentar con proyectos personales y seguir perfeccionando mis habilidades.
-            Creo firmemente en el <strong>aprendizaje continuo</strong> y en mantenerme siempre
-            al día con las tendencias que impulsan el mundo digital.
-          </p>
-        </div>
+            <div class="info-card">
+              <i data-lucide="database" class="h-6 w-6 text-blue-600 dark:text-blue-400"></i>
+              <div>
+                <h4>Bases de Datos</h4>
+                <p>MySQL, SQL y Firebase.</p>
+              </div>
+            </div>
 
-        <div class="about-img fade-in">
-          <img src="assets/img/Fofo-perfil.jpg" alt="Tu foto de perfil" />
-        </div>
-      </div>
-    </div>
-  </section>
+            <div class="info-card">
+              <i data-lucide="headphones" class="h-6 w-6 text-blue-600 dark:text-blue-400"></i>
+              <div>
+                <h4>Soporte Técnico</h4>
+                <p>Mantenimiento y soporte Windows.</p>
+              </div>
+            </div>
 
-
-  <section id="skills" class="skills">
-    <div class="container">
-      <h2 class="section-title fade-in">Mis Habilidades</h2>
-      <div class="skills-grid">
-        <div class="skill-card fade-in">
-          <div class="skill-icon">💻</div>
-          <h3>Frontend</h3>
-          <p>HTML5, CSS3, JavaScript, React,Librerias CSS, REACT JS</p>
-          <div class="progress-bar">
-            <div class="progress" data-width="90"></div>
-          </div>
-        </div>
-        <div class="skill-card fade-in">
-          <div class="skill-icon">⚙️</div>
-          <h3>Backend</h3>
-          <p>Node.js, Python, PHP, YII, Codeigniter, Api</p>
-          <div class="progress-bar">
-            <div class="progress" data-width="85"></div>
-          </div>
-        </div>
-        <!-- <div class="skill-card fade-in">
-                    <div class="skill-icon">📱</div>
-                    <h3>Diseños Web</h3>
-                    <p>Adobe</p>
-                    <div class="progress-bar">
-                        <div class="progress" data-width="75"></div>
-                    </div>
-                </div> -->
-        <div class="skill-card fade-in">
-          <div class="skill-icon">🗄️</div>
-          <h3>Bases de Datos</h3>
-          <p>MySQL, SQL , Firebase</p>
-          <div class="progress-bar">
-            <div class="progress" data-width="80"></div>
-          </div>
-        </div>
-        <div class="skill-card fade-in">
-          <div class="skill-icon">🔧</div>
-          <h3>Herramientas</h3>
-          <p>Git,Office 365, Adobe etc.</p>
-          <div class="progress-bar">
-            <div class="progress" data-width="70"></div>
-          </div>
-        </div>
-        <div class="skill-card fade-in">
-          <div class="skill-icon">🎨</div>
-          <h3>Diseño</h3>
-          <p>Figma, Adobe XD, UI/UX, Responsive Design</p>
-          <div class="progress-bar">
-            <div class="progress" data-width="65"></div>
+            <div class="info-card">
+              <i data-lucide="bar-chart-3" class="h-6 w-6 text-blue-600 dark:text-blue-400"></i>
+              <div>
+                <h4>Reportería</h4>
+                <p>JasperSoft y Power BI.</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="skill-card fade-in">
-          <div class="skill-icon">💻</div>
-          <h3>Soporte Tecnico</h3>
-          <p>Soporte windows,Desarrollo etc.</p>
-          <div class="progress-bar">
-            <div class="progress" data-width="80"></div>
+        <div class="fade-in">
+          <div class="relative mx-auto max-w-md">
+            <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-blue-600/30 to-emerald-400/20 blur-2xl">
+            </div>
+
+            <div class="profile-card profile-card-photo">
+              <img src="assets/img/Fofo-perfil.jpeg" alt="Foto de perfil de Kevin Eduardo" class="profile-photo">
+
+              <div
+                class="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/20 bg-slate-950/80 p-4 text-white backdrop-blur">
+                <p class="font-bold">Kevin Eduardo</p>
+                <p class="text-sm text-slate-300">Software Developer</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+    </div>
     </div>
   </section>
 
-  <section id="projects" class="projects">
-    <div class="container">
-      <h2 class="section-title fade-in">Mis Proyectos</h2>
-      <div class="project-grid">
-
-
-        <!-- SISTEMA CONTROL DE AHORRO CARRO -->
-
-
-
-        <!-- FIN SISTEMA DE CONTROL DE INVENTARIO IT -->
-
-        <div class="project-card">
-          <div class="project-img">
-            <img src="assets/img/Project_Car.png" alt="Sistema de Ahorro de Carro" class="screenshot" />
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Sistema de Ahorro de Carro</h3>
-            <p>
-              Aplicación web para gestionar el ahorro mensual destinado al ahorro para compra de un vehículo, en donde tendra dashboard de ahorro personal con enfoque en experiencia de usuario, visualización clara de métricas financieras y diseño moderno en modo oscuro. Permite al usuario establecer metas, monitorear su progreso y mantenerse motivado mediante indicadores visuales y objetivos personalizados.
-            </p>
-            <div class="project-tags">
-              <span class="tag">HTML</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">LocalStorage</span>
-              <span class="tag">⚡ CCS3</span>
-              <span class="tag">TailwindCSS</span>
-                            <span class="tag">Chart.js</span>
-
-            </div>
-            <div class="project-links">
-              <a href="https://kevinmejia6.github.io/Control-Ahorro-Car/" target="_blank" rel="noopener noreferrer" class="project-link">Ver Demo</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- FIN SISTEMA DE CONTROL DE INVENTARIO IT -->
-
-        <div class="project-card">
-          <div class="project-img">
-            <!-- Aquí va la captura real del sistema -->
-            <img src="assets/img/inventario-login.png" alt="Vista del Sistema de Inventario IT" class="screenshot" />
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Sistema de Control de Inventario IT</h3>
-            <p>
-              Aplicación web enfocada en la gestión y control del inventario
-              de computadoras dentro del área de TI. Permite llevar un
-              registro detallado de cada equipo, clasificarlos según su estado
-              (funcional, bajo rendimiento, en reparación, excelente),
-              importar datos desde archivos JSON y generar estadísticas en
-              tiempo real. Incluye autenticación de usuarios y un panel
-              moderno para la administración centralizada.
-            </p>
-            <div class="project-tags">
-              <span class="tag">HTML</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Firebase</span>
-              <span class="tag">⚡ JavaScript</span>
-
-              <span class="tag">Bootstrap</span>
-            </div>
-            <div class="project-links">
-              <a href="https://kevinmejia6.github.io/ControlInventarioIT/index.html" target="_blank"
-                class="project-link">Ver Demo</a>
-              <!-- <a href="#" class="project-link">GitHub</a> -->
-            </div>
-          </div>
-        </div>
-
-        <!-- FIN SISTEMA DE CONTROL DE INVENTARIO IT -->
-
-        <!-- SISTEMA DE ENCUESTAS -->
-
-        <div class="project-card">
-          <div class="project-img">
-            <img src="assets/img/encuestas-login.png" alt="Sistema de Encuestas" class="screenshot" />
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Sistema de Encuestas</h3>
-            <p>
-              Plataforma web que permite crear, gestionar y responder
-              encuestas en línea de manera eficiente, ofreciendo una
-              experiencia intuitiva tanto para administradores como para
-              participantes. Incluye autenticación de usuarios con diferentes
-              roles, un panel de administración moderno para visualizar
-              respuestas en tiempo real, y herramientas de análisis que
-              facilitan la exportación de resultados y estadísticas en
-              diversos formatos.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Html</span>
-              <span class="tag">CSS3</span>
-              <span class="tag">Firebase</span>
-              <span class="tag">⚡ JavaScript</span>
-
-              <span class="tag">TailwindCSS</span>
-            </div>
-            <div class="project-links">
-              <a href="https://sistema-encuestas-como.web.app/" target="_blank" rel="noopener noreferrer"
-                class="project-link">Ver Demo</a>
-              <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a> -->
-            </div>
-          </div>
-        </div>
-        <!-- FIN SISTEMA DE ENCUESTAS -->
-
-        <!-- SISTEMA GENERADOR DE COTIZACIONES -->
-
-        <div class="project-card">
-          <div class="project-img">
-            <img src="assets/img/CotizadorTecma.png" alt="Sistema Cotizador TECMA" class="screenshot" />
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Sistema Cotizador TECMA</h3>
-            <p>
-              Aplicación web desarrollada para la empresa
-              <strong>TECMA</strong>, que permite generar y gestionar
-              cotizaciones de productos y servicios de forma rápida y
-              organizada. Incluye autogeneración de códigos, control de
-              validez, aplicación de descuentos, carga de imágenes de
-              productos y cálculo automático de totales con impuestos. Además,
-              permite exportar cotizaciones en formato PDF y mantener un
-              historial accesible para clientes y asesores.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Javascript</span>
-              <span class="tag">HTML</span>
-              <span class="tag">CSS3</span>
-              <span class="tag">⚡ JavaScript</span>
-
-              <span class="tag">TailwindCSS</span>
-            </div>
-            <div class="project-links">
-              <a href="https://kevinmejia6.github.io/CotizadorTecma/" target="_blank" class="project-link">Ver Demo</a>
-              <!-- <a href="#" class="project-link">GitHub</a> -->
-            </div>
-          </div>
-        </div>
-        <!-- FIN SISTEMA GENERADOR DE COTIZACIONES -->
-
-        <!-- sistema de control de ahorros. -->
-
-        <div class="project-card">
-          <div class="project-img">
-            <img src="assets/img/Control-Ahorro.png" alt="Control-Ahorro" class="screenshot" />
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Sistema Control de Ahorro</h3>
-            <p>
-              Aplicación web de ahorro inteligente diseñada para ayudar a los
-              usuarios a planificar y alcanzar su meta de comprar su primer
-              vehículo. Permite establecer una meta financiera personalizada,
-              registrar depósitos de ahorro y calcular automáticamente el
-              tiempo estimado para lograr el objetivo. El sistema muestra
-              indicadores clave como el total ahorrado, la cantidad restante,
-              el tiempo aproximado en meses y días, además de hitos de
-              progreso (25%, 50%, 75% y 100%) que motivan al usuario a
-              continuar. También incluye un historial de movimientos para
-              mantener un control detallado de cada aporte realizado. Su
-              interfaz moderna y responsiva está pensada para ofrecer una
-              experiencia clara, motivadora y accesible desde cualquier
-              dispositivo.
-            </p>
-            <div class="project-tags">
-              <span class="tag">Html</span>
-              <span class="tag">CSS3</span>
-              <span class="tag">TailwindCSS</span>
-              <span class="tag">⚡ JavaScript</span>
-
-              <span class="tag">LocalStorage</span>
-            </div>
-            <div class="project-links">
-              <a href="https://kevinmejia6.github.io/SistemaAhorro/" target="_blank" class="project-link">Ver Demo</a>
-              <!-- <a href="#" class="project-link">GitHub</a> -->
-            </div>
-          </div>
-        </div>
-        <!-- FIN sistema de control de ahorros. -->
-
-        <!-- GENERADOR DE FIRMA AUTOMATICA COMO  -->
-        <div class="project-card">
-          <div class="project-img">
-            <img src="assets/img/Generador-Firma-Correo.png" alt="Generador de Firma Automatica COMO"
-              class="screenshot" />
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Generador de Firma Automatica COMO</h3>
-            <p>
-              Aplicación web que permite crear de manera automática firmas
-              digitales personalizadas para correos electrónicos corporativos.
-              Los usuarios ingresan su información (nombre, apellido, correo,
-              sucursal, teléfono y área), y el sistema genera una firma
-              profesional con logotipo, datos de contacto y un código QR
-              dinámico, que facilita el acceso a información adicional o
-              enlaces directos. Este sistema garantiza la uniformidad en la
-              identidad visual de la empresa, mejora la presentación de los
-              correos electrónicos y permite exportar firmas listas para
-              integrar en diferentes plataformas (Gmail, Outlook, Thunderbird,
-              entre otros). Su diseño moderno, intuitivo y responsivo asegura
-              que el proceso sea rápido y eficiente, adaptándose a cualquier
-              dispositivo.
-            </p>
-            <div class="project-tags">
-              <span class="tag">HTML</span>
-              <span class="tag">CCS3</span>
-              <span class="tag">⚡ JavaScript</span>
-
-              <span class="tag">Bootstrap 5</span>
-            </div>
-            <div class="project-links">
-              <a href="https://kvineduardo06.github.io/Generador_Firma/" target="_blank" class="project-link">Ver
-                Demo</a>
-              <!-- <a href="#" class="project-link">GitHub</a> -->
-            </div>
-          </div>
-        </div>
-        <!-- FIN GENERADOR DE FIRMA AUTOMATICA COMO  -->
-
-        <!-- Rastreador de Gastos Personales -->
-
-        <div class="project-card">
-          <div class="project-img">
-            <img src="assets/img/Rastreador-Gastos.png" alt="Rastreador " class="screenshot" />
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Rastreador de Gastos Personales</h3>
-            <p>
-              Aplicación web diseñada para llevar un control detallado y
-              eficiente de las finanzas personales. Permite registrar ingresos
-              por quincena, añadir gastos con categorías personalizadas y
-              visualizar un resumen financiero en tiempo real con balances por
-              período. Incluye gráficos interactivos que muestran los gastos
-              por categoría y por quincena, facilitando la identificación de
-              patrones de consumo y el manejo del presupuesto. Su interfaz
-              moderna e intuitiva ayuda a los usuarios a tomar decisiones
-              financieras más conscientes y organizadas. Con este sistema,
-              gestionar las finanzas se convierte en una tarea sencilla,
-              accesible y visualmente atractiva.
-            </p>
-            <div class="project-tags">
-              <span class="tag">🟦 HTML</span>
-              <span class="tag">🎨 CSS3</span>
-              <span class="tag">⚡ JavaScript</span>
-              <span class="tag">📊 Chart.js</span>
-              <span class="tag">🎭 Bootstrap</span>
-            </div>
-            <div class="project-links">
-              <a href="https://kevinmejia6.github.io/ControlGastoV2/" target="_blank" class="project-link">Ver Demo</a>
-              <!-- <a href="#" class="project-link">GitHub</a> -->
-            </div>
-          </div>
-        </div>
-        <!-- Fin Rastreador de Gastos Personales -->
-
-
+  <!-- HABILIDADES -->
+  <section id="skills" class="section section-alt">
+    <div class="mx-auto max-w-7xl px-5 lg:px-8">
+      <div class="section-header fade-in">
+        <span class="section-kicker">Stack técnico</span>
+        <h2 class="section-title">Mis habilidades</h2>
+        <p class="section-description">
+          Herramientas y tecnologías que utilizo para construir soluciones digitales.
+        </p>
       </div>
+
+      <div id="skills-grid" class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
     </div>
   </section>
 
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2 class="section-title fade-in">Contacto</h2>
-      <p class="fade-in" style="max-width: 700px; margin: 0 auto 40px">
-        ¿Tienes un proyecto en mente o quieres colaborar?
-        <span style="color: var(--secondary-color); font-weight: bold;">¡Me encantaría saber de ti!</span>
-        Completa el formulario y me pondré en contacto contigo lo antes posible.
-      </p>
+  <!-- PROYECTOS -->
+  <section id="projects" class="section section-main">
+    <div class="mx-auto max-w-7xl px-5 lg:px-8">
+      <div class="section-header fade-in">
+        <span class="section-kicker">Portafolio</span>
+        <h2 class="section-title">Mis proyectos</h2>
+        <p class="section-description">
+          Algunos sistemas y aplicaciones que he desarrollado.
+        </p>
+      </div>
 
-      <form id="contact-form" class="fade-in contact-form">
-        <div class="form-group">
-          <input type="text" id="name" class="form-control" placeholder="👤 Tu nombre" required />
+      <div id="project-grid" class="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contact" class="contact-section">
+    <div class="contact-gradient"></div>
+
+    <div class="relative z-10 mx-auto max-w-4xl px-5 text-center lg:px-8">
+      <div class="section-header fade-in">
+        <span class="text-sm font-black uppercase tracking-[0.3em] text-blue-100">
+          Contacto
+        </span>
+
+        <h2 class="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl">
+          ¿Tienes un proyecto en mente?
+        </h2>
+
+        <p class="mx-auto mt-5 max-w-2xl text-blue-100">
+          Completa el formulario y se abrirá WhatsApp con tu mensaje listo para enviar.
+        </p>
+      </div>
+
+      <form id="contact-form" class="contact-form fade-in">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label for="name" class="form-label">Nombre</label>
+            <input id="name" type="text" class="form-control" placeholder="Tu nombre" required>
+          </div>
+
+          <div>
+            <label for="email" class="form-label">Correo</label>
+            <input id="email" type="email" class="form-control" placeholder="tu@email.com" required>
+          </div>
         </div>
-        <div class="form-group">
-          <input type="email" id="email" class="form-control" placeholder="📧 Tu correo electrónico" required />
+
+        <div class="mt-5">
+          <label for="subject" class="form-label">Asunto</label>
+          <input id="subject" type="text" class="form-control" placeholder="Asunto del mensaje" required>
         </div>
-        <div class="form-group">
-          <input type="text" id="subject" class="form-control" placeholder="📌 Asunto" required />
+
+        <div class="mt-5">
+          <label for="message" class="form-label">Mensaje</label>
+          <textarea id="message" class="form-control min-h-[150px] resize-y" placeholder="Cuéntame sobre tu proyecto..."
+            required></textarea>
         </div>
-        <div class="form-group">
-          <textarea id="message" class="form-control" placeholder="💬 Tu mensaje" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">🚀 Enviar por WhatsApp</button>
+
+        <button type="submit" class="btn-whatsapp-form">
+          <i data-lucide="message-circle" class="h-5 w-5"></i>
+          Enviar por WhatsApp
+        </button>
       </form>
-
-      <script>
-        document.getElementById("contact-form").addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // Captura de valores
-          let name = document.getElementById("name").value;
-          let email = document.getElementById("email").value;
-          let subject = document.getElementById("subject").value;
-          let message = document.getElementById("message").value;
-
-          // Número de WhatsApp (con código de país, sin + ni espacios)
-          let phone = "50379919117";
-
-          // Construcción del texto (con saltos de línea %0A)
-          let text = `👤 Nombre: ${name}%0A📧 Correo: ${email}%0A📌 Asunto: ${subject}%0A💬 Mensaje: ${message}`;
-
-          // URL para abrir WhatsApp
-          let url = `https://wa.me/${phone}?text=${text}`;
-
-          // Abrir en nueva pestaña
-          window.open(url, "_blank");
-        });
-      </script>
-
     </div>
   </section>
 
-
-  <!-- Botón flotante de WhatsApp -->
+  <!-- WHATSAPP FLOAT -->
   <a href="https://wa.me/50379919117?text=Hola%20Kevin,%20vi%20tu%20portafolio%20y%20quiero%20más%20información."
-    class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+    target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <i data-lucide="message-circle" class="h-8 w-8"></i>
   </a>
 
-  <footer>
-    <div class="container">
-      <div class="social-links">
-        <a href="#" class="social-link">📱</a>
-        <a href="#" class="social-link">📧</a>
-        <a href="#" class="social-link">🔗</a>
-        <a href="#" class="social-link">🐙</a>
-      </div>
-      <p>&copy; <span id="year"></span> Kevineduardo.dev. Todos los derechos reservados.</p>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="mb-6 flex justify-center gap-4">
+      <!-- Teléfono -->
+      <a href="tel:+50379919117" class="social-link" aria-label="Teléfono">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.11 5.18 2 2 0 0 1 5.11 3h3a2 2 0 0 1 2 1.72c.12.89.33 1.76.63 2.59a2 2 0 0 1-.45 2.11L9 10.71a16 16 0 0 0 4.29 4.29l1.29-1.29a2 2 0 0 1 2.11-.45c.83.3 1.7.51 2.59.63A2 2 0 0 1 22 16.92z" />
+        </svg>
+      </a>
+
+      <!-- Correo -->
+      <a href="mailto:kevinmejia075@gmail.com" class="social-link" aria-label="Correo">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/kevin-mejia-073626219/" target="_blank" rel="noopener noreferrer"
+        class="social-link" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z" />
+        </svg>
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://github.com/kevinmejia6" target="_blank" rel="noopener noreferrer" class="social-link"
+        aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.41 7.86 10.94.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.04 1.76 2.72 1.25 3.38.95.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18A11.1 11.1 0 0 1 12 6.05c.98 0 1.97.13 2.89.38 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.42-2.69 5.38-5.25 5.67.41.35.78 1.05.78 2.12v3.22c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+        </svg>
+      </a>
+    </div>
+
+    <p class="text-sm text-slate-400">
+      &copy; <span id="year"></span> Kevineduardo.dev. Todos los derechos reservados.
+    </p>
     </div>
   </footer>
 
   <script>
-    // Navegación
-    const navbar = document.getElementById("navbar");
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("nav-links");
+    document.addEventListener("DOMContentLoaded", function () {
+      const root = document.documentElement;
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const themeToggle = document.getElementById("theme-toggle");
+      const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+      const contactForm = document.getElementById("contact-form");
 
-    // Mostrar navbar al hacer scroll
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
-        navbar.classList.add("show");
-      } else {
-        navbar.classList.remove("show");
+      const skills = [
+        {
+          icon: "monitor-smartphone",
+          title: "Frontend",
+          description: "HTML5, CSS3, JavaScript, React, TailwindCSS y Bootstrap.",
+          level: 90
+        },
+        {
+          icon: "server",
+          title: "Backend",
+          description: "Node.js, PHP, CodeIgniter, Yii, APIs y lógica de negocio.",
+          level: 85
+        },
+        {
+          icon: "database",
+          title: "Bases de Datos",
+          description: "MySQL, SQL Server y Firebase para aplicaciones reales.",
+          level: 80
+        },
+        {
+          icon: "wrench",
+          title: "Herramientas",
+          description: "Git, Office 365, Adobe, DataTables y entornos Windows.",
+          level: 75
+        },
+        {
+          icon: "palette",
+          title: "Diseño UI/UX",
+          description: "Interfaces modernas, responsivas, limpias y funcionales.",
+          level: 70
+        },
+        {
+          icon: "headphones",
+          title: "Soporte Técnico",
+          description: "Mantenimiento, soporte Windows y solución de incidencias.",
+          level: 80
+        }
+      ];
+
+      const projects = [
+        {
+          title: "Sistema de Ahorro de Carro",
+          image: "assets/img/Project_Car.png",
+          description: "Aplicación web para gestionar el ahorro mensual destinado a la compra de un vehículo, con dashboard financiero, métricas claras y diseño moderno.",
+          tags: ["HTML", "JavaScript", "LocalStorage", "TailwindCSS", "Chart.js"],
+          demo: "https://kevinmejia6.github.io/Control-Ahorro-Car/"
+        },
+        {
+          title: "Sistema de Control de Inventario",
+          image: "assets/img/Control-Inventario.png",
+          description: "Sistema para gestionar inventario de computadoras, estados de equipos, importación JSON, estadísticas y autenticación de usuarios.",
+          tags: ["HTML", "JavaScript", "Firebase", "Bootstrap"],
+          demo: "https://kevinmejia6.github.io/ControlInventarioIT/index.html"
+        },
+        {
+          title: "Sistema de Encuestas",
+          image: "assets/img/encuestas-login.png",
+          description: "Plataforma para crear, gestionar y responder encuestas en línea, con roles, panel administrativo y análisis de respuestas.",
+          tags: ["HTML", "CSS3", "Firebase", "JavaScript", "TailwindCSS"],
+          demo: "https://sistema-encuestas-como.web.app/"
+        },
+        {
+          title: "Sistema Cotizador TECMA",
+          image: "assets/img/CotizadorTecma.png",
+          description: "Aplicación web para generar cotizaciones, controlar validez, aplicar descuentos, subir imágenes y exportar documentos PDF.",
+          tags: ["JavaScript", "HTML", "CSS3", "TailwindCSS"],
+          demo: "https://kevinmejia6.github.io/CotizadorTecma/"
+        },
+        {
+          title: "Sistema Control de Ahorro",
+          image: "assets/img/Control-Ahorro.png",
+          description: "Aplicación de ahorro inteligente para establecer metas financieras, registrar depósitos y visualizar progreso del objetivo.",
+          tags: ["HTML", "CSS3", "TailwindCSS", "JavaScript", "LocalStorage"],
+          demo: "https://kevinmejia6.github.io/SistemaAhorro/"
+        },
+        {
+          title: "Generador de Firma Automática COMO",
+          image: "assets/img/Generador-Firma-Correo.png",
+          description: "Sistema para generar firmas corporativas profesionales con información del usuario, logotipo y código QR dinámico.",
+          tags: ["HTML", "CSS3", "JavaScript", "Bootstrap 5"],
+          demo: "https://kvineduardo06.github.io/Generador_Firma/"
+        },
+        {
+          title: "Rastreador de Gastos Personales",
+          image: "assets/img/Rastreador-Gastos.png",
+          description: "Aplicación para controlar ingresos, gastos, categorías y balances por período, con gráficos interactivos.",
+          tags: ["HTML", "CSS3", "JavaScript", "Chart.js", "Bootstrap"],
+          demo: "https://kevinmejia6.github.io/ControlGastoV2/"
+        },
+        {
+          title: "Administrador de Tareas",
+          image: "assets/img/Nexo-task.png",
+          description: "Aplicación para controlar en tiempo real las tareas que se estan realizando y el estado de cada uno.",
+          tags: ["HTML", "CSS3", "JavaScript", "Lucide", "Tailwind", "Firebase"],
+          demo: "https://kevinmejia6.github.io/Nexo-Task/"
+        }, {
+          title: "Firmado de Contrato COMO",
+          image: "assets/img/Firmador-Contrato.png",
+          description: "Sistema diseñado para capacitador de Recursos Humanos en el cual el usuario daria su firma digital en el contrato.",
+          tags: ["HTML", "CSS3", "JavaScript", "Bootstrap"],
+          demo: "https://kevinmejia6.github.io/Firmador_Contrato/"
+        }
+        , {
+          title: "Consulta JSON DTE",
+          image: "assets/img/Consulta-DTE.png",
+          description: "Sistema diseñado para consultar estado de documento con la fecha y codigo generacion.",
+          tags: ["HTML", "CSS3", "JavaScript", "Bootstrap"],
+          demo: "https://kevinmejia6.github.io/consulta-DTE/"
+        },
+        {
+          title: "Sistema de Facturación Electrónica",
+          image: "assets/img/Factura-electronica.png",
+          description: "Sistema web para la gestión y monitoreo de documentos tributarios electrónicos, permitiendo visualizar facturas, créditos fiscales, sujetos excluidos, notas de crédito, comprobantes de retención y contingencias mediante un dashboard administrativo moderno.",
+          tags: ["React Js", "CSS3", "JavaScript", "Bootstrap", "Facturación Electrónica"],
+          demo: "https://kevinmejia6.github.io/facturacion-electronica/"
+        }
+      ];
+
+      function createIcons() {
+        if (window.lucide) {
+          lucide.createIcons();
+        }
       }
-    });
 
-    // Menú hamburguesa
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-      hamburger.textContent = navLinks.classList.contains("active") ?
-        "✕" :
-        "☰";
-    });
+      function setTheme(theme) {
+        const isDark = theme === "dark";
 
-    // Cerrar menú al hacer clic en un enlace
-    document.querySelectorAll("#nav-links a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-        hamburger.textContent = "☰";
-      });
-    });
+        root.classList.toggle("dark", isDark);
+        root.classList.toggle("light-theme", !isDark);
+        localStorage.setItem("theme", theme);
 
-    // Animaciones con GSAP
-    document.addEventListener("DOMContentLoaded", () => {
-      // Animación de header
-      gsap.to("#hero-title", {
-        opacity: 1,
-        duration: 1,
-        delay: 0.5,
-      });
-      gsap.to("#hero-desc", {
-        opacity: 1,
-        duration: 1,
-        delay: 0.8,
-      });
-      gsap.to("#hero-btn1", {
-        opacity: 1,
-        duration: 1,
-        delay: 1.1,
-      });
-      gsap.to("#hero-btn2", {
-        opacity: 1,
-        duration: 1,
-        delay: 1.3,
-      });
-
-      // Animación de elementos al hacer scroll
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Animación de fade-in
-      gsap.utils.toArray(".fade-in").forEach((element) => {
-        gsap.from(element, {
-          scrollTrigger: {
-            trigger: element,
-            start: "top 80%",
-            toggleClass: {
-              targets: element,
-              className: "active",
-            },
-          },
+        document.querySelectorAll(".theme-icon-sun").forEach(icon => {
+          icon.classList.toggle("hidden", isDark);
         });
-      });
 
-      // Animación de barras de progreso
-      gsap.utils.toArray(".progress").forEach((progress) => {
-        const width = progress.getAttribute("data-width");
-        gsap.to(progress, {
-          scrollTrigger: {
-            trigger: progress.parentElement,
-            start: "top 80%",
-            once: true,
-          },
-          width: `${width}%`,
-          duration: 1.5,
-          ease: "power2.out",
+        document.querySelectorAll(".theme-icon-moon").forEach(icon => {
+          icon.classList.toggle("hidden", !isDark);
         });
-      });
 
-      // Animación de tarjetas de proyecto
-      gsap.utils.toArray(".project-card").forEach((card, i) => {
-        gsap.to(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            toggleClass: {
-              targets: card,
-              className: "show",
-            },
-          },
-          delay: i * 0.2,
+        createIcons();
+      }
+
+      function toggleTheme() {
+        const nextTheme = root.classList.contains("dark") ? "light" : "dark";
+        setTheme(nextTheme);
+      }
+
+      function initTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        setTheme(theme);
+      }
+
+      function renderSkills() {
+        const container = document.getElementById("skills-grid");
+        if (!container) return;
+
+        container.innerHTML = skills.map(skill => `
+          <article class="skill-card fade-in">
+            <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600/10 text-blue-600 dark:bg-blue-400/10 dark:text-blue-400">
+              <i data-lucide="${skill.icon}" class="h-7 w-7"></i>
+            </div>
+
+            <h3>${skill.title}</h3>
+            <p>${skill.description}</p>
+
+            <div class="mt-6">
+              <div class="mb-2 flex justify-between text-xs font-black text-[var(--text-muted)]">
+                <span>Nivel</span>
+                <span>${skill.level}%</span>
+              </div>
+
+              <div class="h-2 overflow-hidden rounded-full bg-[var(--progress-bg)]">
+                <div class="progress h-full rounded-full bg-blue-600 dark:bg-blue-400" data-width="${skill.level}"></div>
+              </div>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      function renderProjects() {
+        const container = document.getElementById("project-grid");
+        if (!container) return;
+
+        container.innerHTML = projects.map(project => `
+          <article class="project-card group fade-in">
+            <div class="relative overflow-hidden">
+              <img
+                src="${project.image}"
+                alt="${project.title}"
+                class="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+              >
+
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent opacity-0 transition group-hover:opacity-100"></div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-6">
+              <h3>${project.title}</h3>
+
+              <p>${project.description}</p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
+              </div>
+
+              <a
+                href="${project.demo}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-link"
+              >
+                Ver demo
+                <i data-lucide="external-link" class="h-4 w-4"></i>
+              </a>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      function initMobileMenu() {
+        if (!hamburger || !mobileMenu) return;
+
+        hamburger.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+
+          const icon = mobileMenu.classList.contains("hidden") ? "menu" : "x";
+          hamburger.innerHTML = `<i data-lucide="${icon}" class="h-6 w-6"></i>`;
+          createIcons();
         });
-      });
-    });
 
-    // Smooth scroll para navegación
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 70,
-            behavior: "smooth",
+        document.querySelectorAll(".mobile-link").forEach(link => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            hamburger.innerHTML = `<i data-lucide="menu" class="h-6 w-6"></i>`;
+            createIcons();
           });
-        }
-      });
-    });
+        });
+      }
 
-    // Form submission (simulado)
-    const contactForm = document.getElementById("contact-form");
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      Toastify({
-        text: "¡Gracias por tu mensaje! Te responderé pronto. 🚀",
-        duration: 11000, // milisegundos
-        close: true, // botón para cerrar
-        gravity: "top", // "top" o "bottom"
-        position: "right", // "left", "center" o "right"
-        backgroundColor: "linear-gradient(to right, #10b981, #059669)", // verde bonito
-        stopOnFocus: true // no se cierra si el usuario pasa el mouse
-      }).showToast();
-      contactForm.reset();
-    });
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener("click", function (event) {
+            const targetId = this.getAttribute("href");
+            const target = document.querySelector(targetId);
 
-    //particlJS
-    particlesJS("particles-js", {
-      "particles": {
-        "number": {
-          "value": 150,
-          "density": {
-            "enable": true,
-            "value_area": 800
+            if (!target) return;
+
+            event.preventDefault();
+
+            window.scrollTo({
+              top: target.offsetTop - 82,
+              behavior: "smooth"
+            });
+          });
+        });
+      }
+
+      function initContactForm() {
+        if (!contactForm) return;
+
+        contactForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const subject = document.getElementById("subject").value.trim();
+          const message = document.getElementById("message").value.trim();
+
+          if (!name || !email || !subject || !message) {
+            if (window.Toastify) {
+              Toastify({
+                text: "Completa todos los campos antes de enviar.",
+                duration: 4000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                style: {
+                  background: "linear-gradient(to right, #ef4444, #b91c1c)"
+                }
+              }).showToast();
+            }
+            return;
           }
-        },
-        "color": {
-          "value": "#ffffff"
-        },
-        "shape": {
-          "type": "circle"
-        },
-        "opacity": {
-          "value": 0.5
-        },
-        "size": {
-          "value": 3,
-          "random": true
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.3,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 2,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out"
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "repulse"
+
+          const phone = "50379919117";
+          const text = encodeURIComponent(
+            `👤 Nombre: ${name}\n📧 Correo: ${email}\n📌 Asunto: ${subject}\n💬 Mensaje: ${message}`
+          );
+
+          const url = `https://wa.me/${phone}?text=${text}`;
+
+          if (window.Toastify) {
+            Toastify({
+              text: "Abriendo WhatsApp...",
+              duration: 3000,
+              close: true,
+              gravity: "top",
+              position: "right",
+              style: {
+                background: "linear-gradient(to right, #10b981, #059669)"
+              }
+            }).showToast();
+          }
+
+          window.open(url, "_blank");
+          contactForm.reset();
+        });
+      }
+
+      function initAnimations() {
+        if (!window.gsap || !window.ScrollTrigger) return;
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to("#hero-title", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: 0.2,
+          ease: "power3.out"
+        });
+
+        gsap.to("#hero-desc", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: 0.45,
+          ease: "power3.out"
+        });
+
+        gsap.to("#hero-buttons", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: 0.7,
+          ease: "power3.out"
+        });
+
+        gsap.utils.toArray(".fade-in").forEach(element => {
+          gsap.fromTo(
+            element,
+            { opacity: 0, y: 35 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.9,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: element,
+                start: "top 85%",
+                once: true
+              }
+            }
+          );
+        });
+
+        gsap.utils.toArray(".progress").forEach(progress => {
+          const width = progress.getAttribute("data-width");
+
+          gsap.fromTo(
+            progress,
+            { width: "0%" },
+            {
+              width: `${width}%`,
+              duration: 1.4,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: progress,
+                start: "top 90%",
+                once: true
+              }
+            }
+          );
+        });
+      }
+
+      function initParticles() {
+        if (!window.particlesJS) return;
+
+        particlesJS("particles-js", {
+          particles: {
+            number: {
+              value: 90,
+              density: {
+                enable: true,
+                value_area: 900
+              }
+            },
+            color: {
+              value: "#ffffff"
+            },
+            shape: {
+              type: "circle"
+            },
+            opacity: {
+              value: 0.35,
+              random: true
+            },
+            size: {
+              value: 3,
+              random: true
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: "#ffffff",
+              opacity: 0.18,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.8,
+              direction: "none",
+              random: false,
+              straight: false,
+              out_mode: "out"
+            }
           },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          }
-        },
-        "modes": {
-          "repulse": {
-            "distance": 100,
-            "duration": 0.4
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: {
+                enable: true,
+                mode: "repulse"
+              },
+              onclick: {
+                enable: true,
+                mode: "push"
+              },
+              resize: true
+            },
+            modes: {
+              repulse: {
+                distance: 120,
+                duration: 0.4
+              },
+              push: {
+                particles_nb: 4
+              }
+            }
           },
-          "push": {
-            "particles_nb": 4
-          }
-        }
-      },
-      "retina_detect": true
-    });
+          retina_detect: true
+        });
+      }
 
-    // Inserta el año actual automáticamente
-    document.getElementById("year").textContent = new Date().getFullYear();
+      function initYear() {
+        const year = document.getElementById("year");
+        if (year) {
+          year.textContent = new Date().getFullYear();
+        }
+      }
+
+      themeToggle?.addEventListener("click", toggleTheme);
+      themeToggleMobile?.addEventListener("click", toggleTheme);
+
+      initTheme();
+      renderSkills();
+      renderProjects();
+      initMobileMenu();
+      initSmoothScroll();
+      initContactForm();
+      initParticles();
+      initYear();
+      createIcons();
+      initAnimations();
+    });
   </script>
 </body>
 
 </html>
-<script>
-
-</script>
