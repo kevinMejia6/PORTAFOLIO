@@ -1465,18 +1465,12 @@ body.menu-open {
 
 .mobile-link {
   display: grid;
-  grid-template-columns: 30px 1fr 38px;
+  grid-template-columns: 1fr 38px;
   align-items: center;
   gap: 10px;
   min-height: 64px;
   color: var(--text-primary);
   transition: background 0.2s ease, color 0.2s ease, padding 0.2s ease;
-}
-
-.mobile-link > span {
-  color: var(--text-muted);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.66rem;
 }
 
 .mobile-link strong {
