@@ -1376,8 +1376,11 @@ body.menu-open {
 }
 
 .mobile-menu-backdrop {
-  position: fixed;
-  inset: 73px 0 0;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: calc(100dvh - 73px);
   z-index: 1;
   border: 0;
   background: rgba(5, 10, 8, 0.52);
@@ -1386,8 +1389,11 @@ body.menu-open {
 }
 
 .mobile-menu {
-  position: fixed;
-  inset: 73px 0 0;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: calc(100dvh - 73px);
   z-index: 2;
   overflow-y: auto;
   border-top: 1px solid var(--border-color);
