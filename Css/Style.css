@@ -1366,3 +1366,216 @@ html.dark .tag {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =========================
+   MENÚ MÓVIL INMERSIVO
+   ========================= */
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 73px 0 0;
+  z-index: 1;
+  border: 0;
+  background: rgba(5, 10, 8, 0.52);
+  backdrop-filter: blur(8px);
+  animation: mobile-backdrop-in 0.25s ease both;
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 73px 0 0;
+  z-index: 2;
+  overflow-y: auto;
+  border-top: 1px solid var(--border-color);
+  background:
+    radial-gradient(circle at 90% 8%, var(--accent-soft), transparent 30%),
+    var(--mobile-menu-bg);
+  padding: 0;
+  color: var(--text-primary);
+  animation: mobile-menu-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  overscroll-behavior: contain;
+}
+
+.mobile-menu-inner {
+  display: flex;
+  min-height: calc(100dvh - 73px);
+  flex-direction: column;
+  padding: 24px 20px max(24px, env(safe-area-inset-bottom));
+}
+
+.mobile-menu-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 4px 4px 22px;
+}
+
+.mobile-menu-kicker {
+  color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mobile-menu-heading p {
+  margin-top: 4px;
+  color: var(--text-primary);
+  font-size: 1.42rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.mobile-menu-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.mobile-menu-status > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.mobile-nav-list {
+  border-top: 1px solid var(--border-color);
+}
+
+.mobile-nav-list li {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.mobile-link {
+  display: grid;
+  grid-template-columns: 30px 1fr 38px;
+  align-items: center;
+  gap: 10px;
+  min-height: 64px;
+  color: var(--text-primary);
+  transition: background 0.2s ease, color 0.2s ease, padding 0.2s ease;
+}
+
+.mobile-link > span {
+  color: var(--text-muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+}
+
+.mobile-link strong {
+  font-size: 1.08rem;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+
+.mobile-link svg {
+  width: 19px;
+  height: 19px;
+  color: var(--text-muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.mobile-link:hover,
+.mobile-link:focus-visible {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding-inline: 10px;
+}
+
+.mobile-link:hover svg,
+.mobile-link:focus-visible svg {
+  color: var(--accent);
+  transform: scale(1.08);
+}
+
+.mobile-menu-footer {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.mobile-cv-link {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 14px;
+  background: var(--accent);
+  padding: 15px 20px;
+  color: var(--accent-contrast);
+  font-weight: 800;
+}
+
+.mobile-cv-link svg {
+  width: 19px;
+  height: 19px;
+}
+
+.mobile-social-links {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  padding-top: 20px;
+}
+
+.mobile-social-links a {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.mobile-social-links a:hover {
+  color: var(--accent);
+}
+
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mobile-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (min-width: 768px) {
+  .mobile-menu,
+  .mobile-menu-backdrop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 380px), (max-height: 700px) {
+  .mobile-menu-inner {
+    padding-top: 16px;
+  }
+
+  .mobile-menu-heading {
+    padding-bottom: 14px;
+  }
+
+  .mobile-link {
+    min-height: 55px;
+  }
+
+  .mobile-menu-footer {
+    padding-top: 18px;
+  }
+}

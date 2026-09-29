@@ -100,21 +100,44 @@
           <i data-lucide="moon" class="theme-icon-moon hidden h-5 w-5"></i>
         </button>
 
-        <button id="hamburger" type="button" class="menu-btn" aria-label="Abrir menú">
+        <button id="hamburger" type="button" class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
           <i data-lucide="menu" class="h-6 w-6"></i>
         </button>
       </div>
     </div>
 
-    <div id="mobile-menu" class="mobile-menu hidden md:hidden">
-      <ul class="space-y-4 text-base font-bold">
-        <li><a class="mobile-link block" href="#home">Inicio</a></li>
-        <li><a class="mobile-link block" href="#about">Sobre mí</a></li>
-        <li><a class="mobile-link block" href="#experience">Experiencia</a></li>
-        <li><a class="mobile-link block" href="#skills">Habilidades</a></li>
-        <li><a class="mobile-link block" href="#projects">Proyectos</a></li>
-        <li><a class="mobile-link block" href="#contact">Contacto</a></li>
-      </ul>
+    <button id="mobile-menu-backdrop" class="mobile-menu-backdrop hidden md:hidden" type="button" aria-label="Cerrar menú"></button>
+
+    <div id="mobile-menu" class="mobile-menu hidden md:hidden" aria-hidden="true">
+      <div class="mobile-menu-inner">
+        <div class="mobile-menu-heading">
+          <div>
+            <span class="mobile-menu-kicker">Navegación</span>
+            <p>¿A dónde vamos?</p>
+          </div>
+          <span class="mobile-menu-status"><span></span> Disponible</span>
+        </div>
+
+        <ul class="mobile-nav-list">
+          <li><a class="mobile-link" href="#home"><span>01</span><strong>Inicio</strong><i data-lucide="home"></i></a></li>
+          <li><a class="mobile-link" href="#about"><span>02</span><strong>Sobre mí</strong><i data-lucide="user-round"></i></a></li>
+          <li><a class="mobile-link" href="#experience"><span>03</span><strong>Experiencia</strong><i data-lucide="briefcase-business"></i></a></li>
+          <li><a class="mobile-link" href="#skills"><span>04</span><strong>Habilidades</strong><i data-lucide="code-2"></i></a></li>
+          <li><a class="mobile-link" href="#projects"><span>05</span><strong>Proyectos</strong><i data-lucide="layers-3"></i></a></li>
+          <li><a class="mobile-link" href="#contact"><span>06</span><strong>Contacto</strong><i data-lucide="message-circle"></i></a></li>
+        </ul>
+
+        <div class="mobile-menu-footer">
+          <a href="assets/Kevin-Mejia-Full-Stack-CV.pdf" download class="mobile-cv-link">
+            <i data-lucide="file-down"></i>
+            Descargar CV
+          </a>
+          <div class="mobile-social-links">
+            <a href="https://www.linkedin.com/in/kevin-leonel-eduardo-mej%C3%ADa-073626219/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/kevinmejia6" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -754,20 +777,34 @@
       function initMobileMenu() {
         if (!hamburger || !mobileMenu) return;
 
-        hamburger.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
+        const backdrop = document.getElementById("mobile-menu-backdrop");
 
-          const icon = mobileMenu.classList.contains("hidden") ? "menu" : "x";
-          hamburger.innerHTML = `<i data-lucide="${icon}" class="h-6 w-6"></i>`;
+        function setMobileMenu(open) {
+          mobileMenu.classList.toggle("hidden", !open);
+          backdrop?.classList.toggle("hidden", !open);
+          mobileMenu.setAttribute("aria-hidden", String(!open));
+          hamburger.setAttribute("aria-expanded", String(open));
+          hamburger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+          document.body.classList.toggle("menu-open", open);
+          hamburger.innerHTML = `<i data-lucide="${open ? "x" : "menu"}" class="h-6 w-6"></i>`;
           createIcons();
+        }
+
+        hamburger.addEventListener("click", () => {
+          setMobileMenu(mobileMenu.classList.contains("hidden"));
         });
 
+        backdrop?.addEventListener("click", () => setMobileMenu(false));
+
         document.querySelectorAll(".mobile-link").forEach(link => {
-          link.addEventListener("click", () => {
-            mobileMenu.classList.add("hidden");
-            hamburger.innerHTML = `<i data-lucide="menu" class="h-6 w-6"></i>`;
-            createIcons();
-          });
+          link.addEventListener("click", () => setMobileMenu(false));
+        });
+
+        document.addEventListener("keydown", event => {
+          if (event.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+            setMobileMenu(false);
+            hamburger.focus();
+          }
         });
       }
 
