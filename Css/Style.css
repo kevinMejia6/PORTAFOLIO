@@ -162,6 +162,7 @@ html.dark .nav-link:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 9px;
   border-radius: 999px;
   background: #2563eb;
   padding: 12px 24px;
@@ -653,7 +654,9 @@ html.light-theme #particles-js {
 
 #hero-title,
 #hero-desc,
-#hero-buttons {
+#availability-note,
+#hero-buttons,
+#hero-socials {
   transform: translateY(30px);
 }
 
@@ -717,4 +720,649 @@ html.light-theme #particles-js {
   object-fit: cover;
   object-position: center 18%;
   display: block;
+}
+
+/* =========================
+   DIRECCIÓN VISUAL 2026
+   ========================= */
+
+:root {
+  --body-bg: #f3f5f2;
+  --section-main-bg: #f3f5f2;
+  --section-alt-bg: #e9ede8;
+  --nav-bg: rgba(243, 245, 242, 0.82);
+  --mobile-menu-bg: #f3f5f2;
+  --card-bg: rgba(255, 255, 255, 0.78);
+  --card-soft-bg: #e7ebe5;
+  --text-primary: #101310;
+  --text-secondary: #323a35;
+  --text-muted: #4f5b54;
+  --border-color: rgba(16, 19, 16, 0.13);
+  --shadow-card: 0 20px 50px rgba(35, 45, 39, 0.08);
+  --progress-bg: #d9ded9;
+  --hero-bg: #f3f5f2;
+  --hero-text: #101310;
+  --hero-muted: #3f4c45;
+  --accent: #066a4c;
+  --accent-bright: #087f5b;
+  --accent-soft: rgba(6, 106, 76, 0.11);
+  --accent-contrast: #ffffff;
+}
+
+html.dark {
+  --body-bg: #080b0a;
+  --section-main-bg: #080b0a;
+  --section-alt-bg: #0d1210;
+  --nav-bg: rgba(8, 11, 10, 0.82);
+  --mobile-menu-bg: #0a0e0c;
+  --card-bg: rgba(255, 255, 255, 0.045);
+  --card-soft-bg: rgba(255, 255, 255, 0.07);
+  --text-primary: #f2f7f4;
+  --text-secondary: #d3dcd7;
+  --text-muted: #aeb9b3;
+  --border-color: rgba(201, 255, 231, 0.12);
+  --progress-bg: rgba(255, 255, 255, 0.1);
+  --hero-bg: #080b0a;
+  --hero-text: #f2f7f4;
+  --hero-muted: #c1ccc6;
+  --footer-bg: #050706;
+  --accent: #55e6b8;
+  --accent-bright: #7af0cb;
+  --accent-soft: rgba(85, 230, 184, 0.1);
+  --accent-contrast: #06100c;
+}
+
+body,
+.site-body {
+  font-family: "Manrope", system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: #06100c;
+}
+
+.site-nav {
+  border-bottom-color: var(--border-color);
+}
+
+.site-nav > div:first-child {
+  max-width: 88rem;
+}
+
+.logo-box {
+  height: 40px;
+  width: 40px;
+  border-radius: 12px;
+  background: var(--text-primary);
+  color: var(--body-bg);
+  box-shadow: none;
+  letter-spacing: -0.08em;
+}
+
+.brand-dot,
+.nav-link:hover,
+html.dark .nav-link:hover,
+.section-kicker {
+  color: var(--accent);
+}
+
+.nav-link {
+  font-weight: 700;
+}
+
+.nav-link::after {
+  background: var(--accent);
+}
+
+.btn-nav,
+.btn-primary,
+.project-link {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  box-shadow: none;
+}
+
+.btn-nav:hover,
+.btn-primary:hover,
+.project-link:hover {
+  background: var(--accent-bright);
+  color: var(--accent-contrast);
+}
+
+.theme-btn,
+.menu-btn {
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.theme-btn:hover,
+.menu-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.hero-section,
+html.dark .hero-section {
+  background:
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px),
+    radial-gradient(circle at 74% 30%, var(--accent-soft), transparent 30%),
+    var(--hero-bg);
+  background-size: 64px 64px, 64px 64px, auto, auto;
+}
+
+.hero-gradient {
+  background: linear-gradient(to bottom, transparent 65%, var(--hero-bg));
+}
+
+.hero-badge {
+  border-radius: 10px;
+  padding: 9px 13px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  max-width: 13ch;
+  font-size: clamp(3rem, 6.7vw, 6.3rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.068em;
+}
+
+.hero-description {
+  max-width: 610px;
+  font-size: 1.16rem;
+  line-height: 1.75;
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 12px;
+  padding: 15px 24px;
+  font-weight: 800;
+}
+
+.hero-stats {
+  max-width: 690px;
+}
+
+.stat-number {
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  letter-spacing: -0.05em;
+}
+
+.stat-label {
+  margin-top: 3px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.hero-section pre {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.hero-section .rounded-\[2rem\] {
+  transform: rotate(1.5deg);
+}
+
+.section {
+  padding: 124px 0;
+}
+
+.section-header {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.section-kicker {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+}
+
+html.dark .section-kicker {
+  color: var(--accent);
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4.7rem);
+  font-weight: 800;
+  letter-spacing: -0.065em;
+}
+
+.section-description {
+  max-width: 650px;
+}
+
+.info-card,
+.skill-card,
+.project-card,
+.profile-card {
+  box-shadow: none;
+}
+
+.info-card {
+  border-radius: 16px;
+  background: transparent;
+}
+
+.info-card:hover,
+.skill-card:hover,
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent) 48%, transparent);
+}
+
+.skill-card {
+  border-radius: 18px;
+  padding: 26px;
+}
+
+.skill-card > div:first-child {
+  border-radius: 12px;
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+}
+
+.info-card svg,
+.skill-card svg {
+  color: var(--accent) !important;
+  stroke: currentColor;
+}
+
+.skill-card .progress {
+  background: var(--accent) !important;
+}
+
+.project-card {
+  border-radius: 18px;
+  background: var(--card-bg);
+}
+
+.project-card-featured {
+  border-color: color-mix(in srgb, var(--accent) 34%, transparent);
+}
+
+.project-media {
+  height: 240px;
+  background: #121815;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-media-logo {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(85, 230, 184, 0.18), transparent 32%),
+    linear-gradient(135deg, #0b1020, #121825);
+}
+
+.project-media-logo .project-image {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.35));
+}
+
+.project-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(6, 16, 12, 0.82);
+  color: #a7f3d8;
+  padding: 7px 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.project-type {
+  margin-bottom: 9px;
+  color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-card h3 {
+  font-size: 1.32rem;
+  letter-spacing: -0.035em;
+}
+
+.tag {
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+}
+
+html.dark .tag {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.project-link {
+  border-radius: 10px;
+}
+
+.contact-section {
+  background: #0b120f;
+}
+
+.contact-gradient {
+  background:
+    linear-gradient(rgba(111, 231, 196, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 231, 196, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at top left, rgba(85, 230, 184, 0.22), transparent 34%);
+  background-size: 56px 56px, 56px 56px, auto;
+}
+
+.contact-form {
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.form-control,
+.btn-whatsapp-form {
+  border-radius: 10px;
+}
+
+.btn-whatsapp-form {
+  background: var(--accent-bright);
+  color: var(--accent-contrast);
+}
+
+.whatsapp-float {
+  height: 58px;
+  width: 58px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  box-shadow: 0 18px 45px rgba(39, 216, 163, 0.22);
+}
+
+.social-link:focus-visible,
+.nav-link:focus-visible,
+.mobile-link:focus-visible,
+.project-link:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-nav:focus-visible,
+.theme-btn:focus-visible,
+.menu-btn:focus-visible,
+.whatsapp-float:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.availability-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.availability-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+.hero-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.hero-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.hero-socials a:hover {
+  color: var(--accent);
+}
+
+.experience-list {
+  position: relative;
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.experience-list::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 149px;
+  width: 1px;
+  background: var(--border-color);
+}
+
+.experience-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 125px 1fr;
+  gap: 48px;
+  padding: 0 0 56px;
+}
+
+.experience-card:last-child {
+  padding-bottom: 0;
+}
+
+.experience-card::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 143px;
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+  border: 3px solid var(--section-alt-bg);
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.experience-period {
+  padding-top: 3px;
+  color: var(--text-muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+
+.experience-content {
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  background: var(--card-bg);
+  padding: 28px;
+}
+
+.experience-company {
+  color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.experience-content h3 {
+  margin-top: 10px;
+  color: var(--text-primary);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.experience-content p,
+.experience-content li {
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.experience-content p {
+  margin-top: 12px;
+}
+
+.experience-content ul {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.experience-content li::marker {
+  color: var(--accent);
+}
+
+.experience-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  max-width: 980px;
+  margin: 58px auto 0;
+  border-top: 1px solid var(--border-color);
+  padding-top: 32px;
+}
+
+.experience-cta p {
+  margin-top: 8px;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 1024px) {
+  .hero-socials {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-list::before {
+    left: 6px;
+  }
+
+  .experience-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-left: 30px;
+  }
+
+  .experience-card::before {
+    left: 0;
+  }
+
+  .experience-period {
+    text-align: left;
+  }
+
+  .experience-content {
+    padding: 22px;
+  }
+
+  .experience-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .experience-cta .btn-primary {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  #project-grid .project-card-featured {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-title {
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section > div.relative {
+    min-height: auto;
+    padding-top: 9rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .hero-stats > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+  }
+
+  .section,
+  .contact-section {
+    padding: 86px 0;
+  }
+
+  .profile-card-photo {
+    height: 500px;
+  }
+
+  .project-media {
+    height: 210px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
